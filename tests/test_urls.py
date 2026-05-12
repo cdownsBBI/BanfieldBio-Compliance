@@ -1,5 +1,12 @@
-"""Tests for URL construction and hybrid SDS resolution."""
+"""Tests for URL construction and hybrid SDS resolution.
+
+Token values are generated via ``uuid.uuid4()`` rather than hardcoded as
+string literals so gitleaks' ``generic-api-key`` heuristic doesn't false-
+positive on what would otherwise look like a leaked secret.
+"""
 from __future__ import annotations
+
+import uuid
 
 from banfieldbio_compliance.config import SiteConfig
 from banfieldbio_compliance.index import SdsEntry
@@ -24,7 +31,7 @@ def test_library_index_url(site_config: SiteConfig) -> None:
 
 
 def test_shipment_pdf_url_uses_token(site_config: SiteConfig) -> None:
-    token = "8f3a-c2b1-9d77-4f1e-a02d-7b6e3c4d5e6f"
+    token = str(uuid.uuid4())
     assert shipment_pdf_url(site_config, token) == (
         f"https://cdownsBBI.github.io/BanfieldBio-Compliance/shipment/{token}.pdf"
     )
@@ -62,7 +69,7 @@ def test_urls_swap_cleanly_to_custom_domain(
 ) -> None:
     # Verifies path shape is identical under a custom domain — so already-
     # printed QR codes keep working after a domain move.
-    token = "deadbeef-cafe-1234-5678-abcdef012345"
+    token = str(uuid.uuid4())
     assert shipment_pdf_url(custom_domain_config, token) == (
         f"https://compliance.banfieldbio.com/shipment/{token}.pdf"
     )

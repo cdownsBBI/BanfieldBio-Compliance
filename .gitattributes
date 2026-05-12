@@ -1,0 +1,41 @@
+# Normalize line endings across platforms.
+#
+# Without this file, a Windows contributor writes CRLF, a macOS/Linux
+# contributor writes LF, and every cross-platform diff is polluted with
+# line-ending changes. With `text=auto`, Git stores LF in the repo and
+# converts to the native platform's line endings in each working tree.
+
+* text=auto
+
+# Text files that should ALWAYS be LF regardless of platform, because
+# the tools that consume them are unix-first (shell, CI, YAML parsers,
+# Python's tokenizer is fine with either but LF is cleaner).
+*.py       text eol=lf
+*.pyi      text eol=lf
+*.sh       text eol=lf
+*.yml      text eol=lf
+*.yaml     text eol=lf
+*.toml     text eol=lf
+*.md       text eol=lf
+*.json     text eol=lf
+*.html     text eol=lf
+*.css      text eol=lf
+*.js       text eol=lf
+*.ts       text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
+LICENSE    text eol=lf
+
+# Explicit binary so Git does not try to diff or line-ending-mangle them.
+*.pdf      binary
+*.png      binary
+*.jpg      binary
+*.jpeg     binary
+*.gif      binary
+*.ico      binary
+*.xlsx     binary
+*.xlsm     binary
+*.xls      binary
+*.zip      binary
+*.gz       binary
+*.tar      binary

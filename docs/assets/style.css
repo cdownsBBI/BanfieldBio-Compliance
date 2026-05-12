@@ -1,0 +1,154 @@
+/* BanfieldBio-Compliance — mobile-first styles for the public site.
+   No framework, no dependencies. Aim: readable on a phone in a loading
+   dock, scales fine to desktop. Keep under 5 KB. */
+
+:root {
+  --fg: #1a1a1a;
+  --fg-muted: #5a5a5a;
+  --bg: #fdfdfd;
+  --card: #ffffff;
+  --border: #dcdcdc;
+  --accent: #0b5fff;
+  --accent-dark: #0944b8;
+  --warn: #a33;
+  --max-w: 44rem;
+  --radius: 6px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+header {
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 1rem;
+  background: var(--card);
+}
+
+header .home {
+  font-weight: 600;
+  color: var(--fg);
+  text-decoration: none;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+main {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+h1 {
+  font-size: 1.4rem;
+  margin: 0.5rem 0 0.25rem;
+}
+
+p.meta {
+  color: var(--fg-muted);
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+}
+
+footer {
+  max-width: var(--max-w);
+  margin: 2rem auto 1rem;
+  padding: 0 1rem;
+  color: var(--fg-muted);
+  font-size: 0.8rem;
+  border-top: 1px solid var(--border);
+  padding-top: 0.75rem;
+}
+
+/* Per-shipment item list */
+ul.item-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li.item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.75rem 0.9rem;
+  margin-bottom: 0.6rem;
+}
+
+.item-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.item-head .inv {
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.85rem;
+  color: var(--fg-muted);
+  background: #f1f3f5;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+}
+
+.item-head .name {
+  font-weight: 600;
+}
+
+.item-meta {
+  color: var(--fg-muted);
+  font-size: 0.85rem;
+  margin: 0.25rem 0 0.6rem;
+}
+
+.item-actions { margin-top: 0.5rem; }
+
+a.btn, .btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+a.btn:hover, .btn:hover { background: var(--accent-dark); }
+
+.no-sds {
+  color: var(--warn);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* Library index table */
+input[type="search"] {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+table.library {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+table.library th, table.library td {
+  padding: 0.5rem 0.6rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+table.library th {
+  background: #f5f6f8;
+  font-weight: 600;
+}
+table.library a { color: var(--accent); }

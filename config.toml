@@ -1,0 +1,26 @@
+# BanfieldBio-Compliance site configuration.
+#
+# Once the site is live at <github_user>.github.io/<repo_name>/, both the
+# ORS private tool and the scripts in this repo use `base_url` to construct
+# absolute URLs for QR codes and landing pages.
+#
+# When you later move to a custom domain, set custom_domain to the new root
+# (e.g., "https://compliance.banfieldbio.com" -- the broader-scope counterpart
+# to the original sds.banfieldbio.com plan, since this repo holds SDS + EPA +
+# DOT + occasional COA documents). Path structure below the root must NOT
+# change -- already-printed QR codes depend on it.
+
+[site]
+github_user = "cdownsBBI"
+repo_name = "BanfieldBio-Compliance"
+# TODO: set this to "https://compliance.banfieldbio.com" once DNS is configured
+# and verified in GitHub Pages settings. Until then, leave empty so base_url
+# is derived from {github_user}.github.io/{repo_name}.
+custom_domain = ""
+
+[library]
+# Where in the repo the PDFs and landing pages live, relative to the Pages root.
+sds_dir = "sds"
+shipment_dir = "shipment"
+item_dir = "item"
+index_file = "data/index.json"

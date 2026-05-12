@@ -12,6 +12,7 @@ license = { text = "Proprietary" }
 # No-reply email so inquiries route through GitHub Issues, not a personal inbox.
 authors = [{ name = "Chris Downs", email = "cdownsBBI@users.noreply.github.com" }]
 dependencies = [
+    "click>=8.1",
     "pydantic>=2.6",
     "qrcode[pil]>=7.4",
     "jinja2>=3.1",

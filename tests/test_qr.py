@@ -1,4 +1,4 @@
-"""Tests for QR code generation — verifies output is a valid PNG, not the contents."""
+"""Tests for QR code generation -- verifies output is a valid PNG, not the contents."""
 from __future__ import annotations
 
 from pathlib import Path

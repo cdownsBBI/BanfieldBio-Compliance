@@ -40,7 +40,7 @@ def test_shipment_pdf_url_uses_token(site_config: SiteConfig) -> None:
 def test_sds_url_prefers_mirror(
     site_config: SiteConfig, entry_with_mirror: SdsEntry
 ) -> None:
-    # Mirror present AND source URL present — mirror wins.
+    # Mirror present AND source URL present -- mirror wins.
     url = sds_url(site_config, entry_with_mirror)
     assert url == "https://cdownsBBI.github.io/BanfieldBio-Compliance/sds/C1174.pdf"
 
@@ -67,7 +67,7 @@ def test_sds_url_strips_leading_slash_in_mirror_path(site_config: SiteConfig) ->
 def test_urls_swap_cleanly_to_custom_domain(
     custom_domain_config: SiteConfig, entry_with_mirror: SdsEntry
 ) -> None:
-    # Verifies path shape is identical under a custom domain — so already-
+    # Verifies path shape is identical under a custom domain -- so already-
     # printed QR codes keep working after a domain move.
     token = str(uuid.uuid4())
     assert shipment_pdf_url(custom_domain_config, token) == (

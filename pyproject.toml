@@ -16,7 +16,6 @@ dependencies = [
     "qrcode[pil]>=7.4",
     "jinja2>=3.1",
     "reportlab>=4.0",
-    "tomli>=2.0; python_version < '3.11'",
 ]
 
 [project.optional-dependencies]
@@ -38,6 +37,11 @@ target-version = "py311"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "W", "N", "UP", "B", "SIM"]
+
+[tool.ruff.lint.isort]
+# Without this, ruff classifies our own package as third-party when imported
+# from the tests/ directory, which trips I001 on otherwise-canonical orderings.
+known-first-party = ["banfieldbio_compliance"]
 
 [tool.mypy]
 python_version = "3.11"

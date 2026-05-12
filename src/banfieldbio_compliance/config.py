@@ -7,14 +7,9 @@ Downstream code always asks the config for a base URL; it never hardcodes it.
 
 from __future__ import annotations
 
-import sys
+import tomllib as _toml
 from dataclasses import dataclass
 from pathlib import Path
-
-if sys.version_info >= (3, 11):
-    import tomllib as _toml
-else:  # pragma: no cover
-    import tomli as _toml  # type: ignore[no-redef]
 
 
 @dataclass(frozen=True)

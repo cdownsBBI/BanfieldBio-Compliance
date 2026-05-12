@@ -1,0 +1,44 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "banfieldbio-compliance"
+version = "0.1.0"
+description = "Public compliance documentation library for BanfieldBio research shipments: SDS, EPA labels, DOT paperwork, per-shipment PDF landing pages."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Proprietary" }
+# No-reply email so inquiries route through GitHub Issues, not a personal inbox.
+authors = [{ name = "Chris Downs", email = "cdownsBBI@users.noreply.github.com" }]
+dependencies = [
+    "pydantic>=2.6",
+    "qrcode[pil]>=7.4",
+    "jinja2>=3.1",
+    "reportlab>=4.0",
+    "tomli>=2.0; python_version < '3.11'",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.4",
+    "mypy>=1.8",
+]
+
+[project.scripts]
+bbi-compliance = "banfieldbio_compliance.cli:cli"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/banfieldbio_compliance"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "N", "UP", "B", "SIM"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true

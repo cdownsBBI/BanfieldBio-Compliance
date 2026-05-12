@@ -1,0 +1,16 @@
+# BanfieldBio-Compliance — search engine policy
+#
+# /shipment/ holds per-shipment PDFs at opaque-token URLs. The tokens
+# themselves are unguessable, but as a defense-in-depth measure we also
+# instruct search engines not to crawl that subtree, so a leaked URL
+# does not get indexed and surfaced via search.
+#
+# /item/ and /sds/ hold generic per-item landing pages and mirrored
+# manufacturer SDS PDFs. These are intentionally indexable so receiving
+# labs (or anyone) can find SDS info via search.
+
+User-agent: *
+Disallow: /shipment/
+Allow: /item/
+Allow: /sds/
+Allow: /

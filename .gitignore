@@ -1,0 +1,58 @@
+# Python build / test artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+*.egg
+dist/
+build/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.tox/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Secrets and local env -- never commit. ALL .env variants are blocked with
+# no exceptions (no .env.example either). If you need to document expected
+# variables, put them in the README, not a committed file. Use GitHub
+# Actions secrets for CI and a local untracked file for dev.
+.env
+.env.*
+*.env
+secrets.toml
+credentials.json
+*.pem
+*.key
+*.crt
+*.p12
+*.keystore
+
+# Editor and IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# OS / misc
+*.log
+*.bak
+.cache/
+node_modules/
+
+# Local-only SDS archives (uncomment ONLY if you decide to version-control
+# the PDF library on a branch other than main and want a clean main).
+# docs/sds/*.pdf

@@ -7,7 +7,6 @@ import pytest
 
 from banfieldbio_compliance.qr import render_qr_bytes, render_qr_png
 
-
 _PNG_MAGIC = b"\x89PNG\r\n\x1a\n"
 
 

@@ -7,21 +7,166 @@
   <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
-<header><a class="home" href="./">BanfieldBio Compliance</a></header>
+<header>
+  <a class="home" href="https://cdownsBBI.github.io/BanfieldBio-Compliance/">BanfieldBio Compliance</a>
+</header>
 <main>
-  <h1>Compliance Library</h1>
-  <p class="meta">
-    This page is a placeholder. Once items are added and
-    <code>bbi-compliance publish-index</code> is run, a searchable list of every
-    chemical in the library appears here.
-  </p>
-  <p>
-    For now, scan the QR code on your shipment's box to jump directly to
-    the per-shipment compliance PDF for that delivery.
-  </p>
+
+<h1>Compliance Library</h1>
+<p class="meta">9 item(s) in the library.</p>
+<input type="search" id="q" placeholder="Filter by Inv#, name, or CAS…" autocomplete="off">
+<table class="library">
+  <thead>
+    <tr><th>Inv#</th><th>Name</th><th>CAS</th><th>SDS</th></tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td><a href="https://cdownsBBI.github.io/BanfieldBio-Compliance/item/C1001/">C1001</a></td>
+      <td>Acetone</td>
+      <td>67-64-1</td>
+      <td>
+        
+          <a href="https://www.sigmaaldrich.com/US/en/sds/sigald/179124"
+             rel="noopener" target="_blank">
+            external
+          </a>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <td><a href="https://cdownsBBI.github.io/BanfieldBio-Compliance/item/C1008/">C1008</a></td>
+      <td>Benzyl alcohol</td>
+      <td>100-51-6</td>
+      <td>
+        
+          <a href="https://www.sigmaaldrich.com/US/en/sds/sial/305197"
+             rel="noopener" target="_blank">
+            external
+          </a>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <td><a href="https://cdownsBBI.github.io/BanfieldBio-Compliance/item/C1025/">C1025</a></td>
+      <td>Diethyl phthalate</td>
+      <td>84-66-2</td>
+      <td>
+        
+          <a href="https://www.sigmaaldrich.com/US/en/sds/aldrich/w512206"
+             rel="noopener" target="_blank">
+            external
+          </a>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <td><a href="https://cdownsBBI.github.io/BanfieldBio-Compliance/item/C1026/">C1026</a></td>
+      <td>Dimethylsulfoxide</td>
+      <td>67-68-5</td>
+      <td>
+        
+          <a href="https://www.sigmaaldrich.com/US/en/sds/sigma/d8418"
+             rel="noopener" target="_blank">
+            external
+          </a>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <td><a href="https://cdownsBBI.github.io/BanfieldBio-Compliance/item/C1028/">C1028</a></td>
+      <td>Ethanol</td>
+      <td>64-17-5</td>
+      <td>
+        
+          <a href="https://www.sigmaaldrich.com/US/en/sds/sigald/459844"
+             rel="noopener" target="_blank">
+            external
+          </a>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <td><a href="https://cdownsBBI.github.io/BanfieldBio-Compliance/item/C1029/">C1029</a></td>
+      <td>Ethyl acetate</td>
+      <td>141-78-6</td>
+      <td>
+        
+          <a href="https://www.sigmaaldrich.com/US/en/sds/sial/270989"
+             rel="noopener" target="_blank">
+            external
+          </a>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <td><a href="https://cdownsBBI.github.io/BanfieldBio-Compliance/item/C1043/">C1043</a></td>
+      <td>Glycerin</td>
+      <td>56-81-5</td>
+      <td>
+        
+          <a href="https://www.sigmaaldrich.com/US/en/sds/sial/g9012"
+             rel="noopener" target="_blank">
+            external
+          </a>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <td><a href="https://cdownsBBI.github.io/BanfieldBio-Compliance/item/C1048/">C1048</a></td>
+      <td>Hexane</td>
+      <td>110-54-3</td>
+      <td>
+        
+          <a href="https://www.sigmaaldrich.com/US/en/sds/sial/296090"
+             rel="noopener" target="_blank">
+            external
+          </a>
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <td><a href="https://cdownsBBI.github.io/BanfieldBio-Compliance/item/C1063/">C1063</a></td>
+      <td>Isopropyl alcohol</td>
+      <td>67-63-0</td>
+      <td>
+        
+          <a href="https://www.sigmaaldrich.com/US/en/sds/sigma/i9516"
+             rel="noopener" target="_blank">
+            external
+          </a>
+        
+      </td>
+    </tr>
+  
+  </tbody>
+</table>
+<script>
+  // No framework; tiny progressive-enhancement filter.
+  const q = document.getElementById('q');
+  const rows = document.querySelectorAll('table.library tbody tr');
+  q && q.addEventListener('input', () => {
+    const needle = q.value.toLowerCase();
+    rows.forEach(r => {
+      r.style.display = r.textContent.toLowerCase().includes(needle) ? '' : 'none';
+    });
+  });
+</script>
+
 </main>
 <footer>
-  <p>Compliance reference. Always verify the document matches the label on the container you received.</p>
+  <p>
+    Compliance reference. Always verify the document matches the label on
+    the container you received. Generated 2026-06-30 12:13.
+  </p>
 </footer>
 </body>
 </html>

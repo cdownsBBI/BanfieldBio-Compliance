@@ -1,1 +1,74 @@
-[]
+[
+  {
+    "inv_num": "C1001",
+    "name": "Acetone",
+    "cas_num": "67-64-1",
+    "manufacturer": "Sigma-Aldrich",
+    "source_url": "https://www.sigmaaldrich.com/US/en/sds/sigald/179124",
+    "added_on": "2026-06-30"
+  },
+  {
+    "inv_num": "C1008",
+    "name": "Benzyl alcohol",
+    "cas_num": "100-51-6",
+    "manufacturer": "Sigma-Aldrich",
+    "source_url": "https://www.sigmaaldrich.com/US/en/sds/sial/305197",
+    "added_on": "2026-06-30"
+  },
+  {
+    "inv_num": "C1025",
+    "name": "Diethyl phthalate",
+    "cas_num": "84-66-2",
+    "manufacturer": "Sigma-Aldrich",
+    "source_url": "https://www.sigmaaldrich.com/US/en/sds/aldrich/w512206",
+    "added_on": "2026-06-30"
+  },
+  {
+    "inv_num": "C1026",
+    "name": "Dimethylsulfoxide",
+    "cas_num": "67-68-5",
+    "manufacturer": "Sigma-Aldrich",
+    "source_url": "https://www.sigmaaldrich.com/US/en/sds/sigma/d8418",
+    "added_on": "2026-06-30"
+  },
+  {
+    "inv_num": "C1028",
+    "name": "Ethanol",
+    "cas_num": "64-17-5",
+    "manufacturer": "Sigma-Aldrich",
+    "source_url": "https://www.sigmaaldrich.com/US/en/sds/sigald/459844",
+    "added_on": "2026-06-30"
+  },
+  {
+    "inv_num": "C1029",
+    "name": "Ethyl acetate",
+    "cas_num": "141-78-6",
+    "manufacturer": "Sigma-Aldrich",
+    "source_url": "https://www.sigmaaldrich.com/US/en/sds/sial/270989",
+    "added_on": "2026-06-30"
+  },
+  {
+    "inv_num": "C1043",
+    "name": "Glycerin",
+    "cas_num": "56-81-5",
+    "manufacturer": "Sigma-Aldrich",
+    "source_url": "https://www.sigmaaldrich.com/US/en/sds/sial/g9012",
+    "added_on": "2026-06-30"
+  },
+  {
+    "inv_num": "C1048",
+    "name": "Hexane",
+    "cas_num": "110-54-3",
+    "manufacturer": "Sigma-Aldrich",
+    "source_url": "https://www.sigmaaldrich.com/US/en/sds/sial/296090",
+    "added_on": "2026-06-30"
+  },
+  {
+    "inv_num": "C1063",
+    "name": "Isopropyl alcohol",
+    "cas_num": "67-63-0",
+    "manufacturer": "Sigma-Aldrich",
+    "source_url": "https://www.sigmaaldrich.com/US/en/sds/sigma/i9516",
+    "added_on": "2026-06-30"
+  }
+]

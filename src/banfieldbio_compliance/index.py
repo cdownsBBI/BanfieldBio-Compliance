@@ -13,6 +13,7 @@ import json
 import logging
 from datetime import date
 from pathlib import Path
+from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -25,6 +26,14 @@ class SdsEntry(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     inv_num: str = Field(..., description="Primary key; matches the lab Inv# (e.g., C1174).")
+    # Typed as a single-value Literal on purpose. This index is a PUBLIC
+    # surface, so "public" is the only policy an entry here can legally
+    # carry; a redacted or consignee_only entry is not a thing to be
+    # filtered out downstream, it is a file that must never have been
+    # written. Pydantic rejects it at load, so a bad index fails the build
+    # rather than rendering a page. The field is required: an entry written
+    # before this rule existed does not get grandfathered in.
+    disclosure: Literal["public"]
     name: str
     cas_num: str | None = None
     manufacturer: str | None = None

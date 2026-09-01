@@ -1,21 +1,16 @@
 """Tests for URL construction and hybrid SDS resolution.
 
-Token values are generated via ``uuid.uuid4()`` rather than hardcoded as
-string literals so gitleaks' ``generic-api-key`` heuristic doesn't false-
-positive on what would otherwise look like a leaked secret.
+No opaque tokens appear here any more: shipment URLs are not constructed by
+this package. (They previously used ``uuid.uuid4()`` rather than string
+literals so gitleaks' ``generic-api-key`` heuristic would not false-positive
+on them.)
 """
 from __future__ import annotations
 
-import uuid
-
+from banfieldbio_compliance import urls
 from banfieldbio_compliance.config import SiteConfig
 from banfieldbio_compliance.index import SdsEntry
-from banfieldbio_compliance.urls import (
-    item_url,
-    library_index_url,
-    sds_url,
-    shipment_pdf_url,
-)
+from banfieldbio_compliance.urls import item_url, library_index_url, sds_url
 
 
 def test_item_url_uppercases(site_config: SiteConfig) -> None:
@@ -30,11 +25,15 @@ def test_library_index_url(site_config: SiteConfig) -> None:
     )
 
 
-def test_shipment_pdf_url_uses_token(site_config: SiteConfig) -> None:
-    token = str(uuid.uuid4())
-    assert shipment_pdf_url(site_config, token) == (
-        f"https://cdownsBBI.github.io/BanfieldBio-Compliance/shipment/{token}.pdf"
-    )
+def test_no_public_shipment_url_can_be_constructed() -> None:
+    """The shipment URL builder was removed, not deprecated.
+
+    Shipment PDFs are served from the gated endpoint. A helper here could
+    only ever produce a public URL for something that must not be public,
+    so its absence is the guarantee -- if it comes back, so does the hole.
+    """
+    assert not hasattr(urls, "shipment_pdf_url")
+    assert "shipment" not in urls.__all__ if hasattr(urls, "__all__") else True
 
 
 def test_sds_url_prefers_mirror(
@@ -59,7 +58,9 @@ def test_sds_url_returns_none_when_no_sources(
 
 
 def test_sds_url_strips_leading_slash_in_mirror_path(site_config: SiteConfig) -> None:
-    entry = SdsEntry(inv_num="C1", name="x", mirror_path="/sds/C1.pdf")
+    entry = SdsEntry(
+        disclosure="public",
+        inv_num="C1", name="x", mirror_path="/sds/C1.pdf")
     url = sds_url(site_config, entry)
     assert url == "https://cdownsBBI.github.io/BanfieldBio-Compliance/sds/C1.pdf"
 
@@ -69,9 +70,8 @@ def test_urls_swap_cleanly_to_custom_domain(
 ) -> None:
     # Verifies path shape is identical under a custom domain -- so already-
     # printed QR codes keep working after a domain move.
-    token = str(uuid.uuid4())
-    assert shipment_pdf_url(custom_domain_config, token) == (
-        f"https://compliance.banfieldbio.com/shipment/{token}.pdf"
+    assert item_url(custom_domain_config, "C1174") == (
+        "https://compliance.banfieldbio.com/item/C1174/"
     )
     assert sds_url(custom_domain_config, entry_with_mirror) == (
         "https://compliance.banfieldbio.com/sds/C1174.pdf"

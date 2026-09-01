@@ -21,7 +21,6 @@ class SiteConfig:
         repo_name: Name of the public repo (used in the github.io URL).
         custom_domain: Non-empty to override the derived github.io base URL.
         sds_dir: Subdir under Pages root containing mirrored PDFs.
-        shipment_dir: Subdir under Pages root for per-shipment landing pages.
         item_dir: Subdir under Pages root for per-item landing pages.
         index_file: Path to the master index, relative to the repo root.
     """
@@ -30,7 +29,6 @@ class SiteConfig:
     repo_name: str
     custom_domain: str
     sds_dir: str
-    shipment_dir: str
     item_dir: str
     index_file: str
 
@@ -74,7 +72,6 @@ def load_config(config_path: Path) -> SiteConfig:
         repo_name=str(site.get("repo_name", "BanfieldBio-Compliance")).strip(),
         custom_domain=str(site.get("custom_domain", "")).strip(),
         sds_dir=str(lib.get("sds_dir", "sds")).strip("/"),
-        shipment_dir=str(lib.get("shipment_dir", "shipment")).strip("/"),
         item_dir=str(lib.get("item_dir", "item")).strip("/"),
         index_file=str(lib.get("index_file", "data/index.json")),
     )

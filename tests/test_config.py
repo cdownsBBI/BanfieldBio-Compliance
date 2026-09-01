@@ -20,7 +20,7 @@ def test_base_url_strips_trailing_slash_on_custom_domain() -> None:
     c = SiteConfig(
         github_user="x", repo_name="r",
         custom_domain="https://compliance.example.com/",
-        sds_dir="sds", shipment_dir="shipment",
+        sds_dir="sds",
         item_dir="item", index_file="data/index.json",
     )
     assert c.base_url == "https://compliance.example.com"
@@ -29,7 +29,7 @@ def test_base_url_strips_trailing_slash_on_custom_domain() -> None:
 def test_base_url_rejects_placeholder_user() -> None:
     c = SiteConfig(
         github_user="REPLACE_ME", repo_name="r", custom_domain="",
-        sds_dir="sds", shipment_dir="shipment",
+        sds_dir="sds",
         item_dir="item", index_file="data/index.json",
     )
     with pytest.raises(ValueError, match="github_user"):

@@ -1,13 +1,16 @@
 # BanfieldBio-Compliance — search engine policy
 #
-# /shipment/ holds per-shipment PDFs at opaque-token URLs. The tokens
-# themselves are unguessable, but as a defense-in-depth measure we also
-# instruct search engines not to crawl that subtree, so a leaked URL
-# does not get indexed and surfaced via search.
+# Everything published here is material explicitly classified `public` in
+# the BanfieldBio inventory, and is meant to be found: a receiving lab or a
+# responder should be able to search for an SDS and land on it.
 #
-# /item/ and /sds/ hold generic per-item landing pages and mirrored
-# manufacturer SDS PDFs. These are intentionally indexable so receiving
-# labs (or anyone) can find SDS info via search.
+# There is no /shipment/ surface. Per-shipment documents carry ship dates,
+# quantities, lot numbers and CAS, and are served from the gated endpoint,
+# not from this site. The Disallow below is a tombstone for URLs that used
+# to exist, not protection for anything currently here — this repo is
+# public, so its file tree is browsable regardless of what robots.txt says.
+# Nothing is kept out of a crawler's reach by this file; things are kept
+# out by not being committed.
 
 User-agent: *
 Disallow: /shipment/

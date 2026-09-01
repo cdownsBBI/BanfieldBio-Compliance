@@ -40,7 +40,7 @@ def test_saved_index_is_sorted_and_pretty(tmp_path: Path, sample_index: SdsIndex
 
 def test_load_accepts_bare_list(tmp_path: Path) -> None:
     path = tmp_path / "index.json"
-    path.write_text('[{"inv_num": "C1", "name": "x"}]', encoding="utf-8")
+    path.write_text('[{"inv_num": "C1", "name": "x", "disclosure": "public"}]', encoding="utf-8")
     idx = load_index(path)
     assert idx.entries[0].inv_num == "C1"
 
@@ -48,7 +48,7 @@ def test_load_accepts_bare_list(tmp_path: Path) -> None:
 def test_load_accepts_entries_object(tmp_path: Path) -> None:
     path = tmp_path / "index.json"
     path.write_text(
-        '{"entries": [{"inv_num": "C1", "name": "x"}]}', encoding="utf-8"
+        '{"entries": [{"inv_num": "C1", "name": "x", "disclosure": "public"}]}', encoding="utf-8"
     )
     idx = load_index(path)
     assert idx.entries[0].inv_num == "C1"
@@ -69,11 +69,44 @@ def test_by_inv_num_case_insensitive(sample_index: SdsIndex) -> None:
 
 def test_entry_rejects_unknown_field() -> None:
     with pytest.raises(ValidationError):
-        SdsEntry(inv_num="C1", name="x", bogus="y")  # type: ignore[call-arg]
+        SdsEntry(
+        disclosure="public",
+        inv_num="C1", name="x", bogus="y")  # type: ignore[call-arg]
 
 
 def test_entry_has_mirror_flag() -> None:
-    e = SdsEntry(inv_num="C1", name="x", mirror_path="sds/C1.pdf")
+    e = SdsEntry(
+        disclosure="public",
+        inv_num="C1", name="x", mirror_path="sds/C1.pdf")
     assert e.has_mirror and not e.has_source_link
-    e2 = SdsEntry(inv_num="C2", name="x", source_url="https://e/")
+    e2 = SdsEntry(
+        disclosure="public",
+        inv_num="C2", name="x", source_url="https://e/")
     assert e2.has_source_link and not e2.has_mirror
+
+
+# ---------------------------------------------------------------------------
+# The index may only describe public material
+# ---------------------------------------------------------------------------
+
+def test_entry_without_disclosure_is_rejected(tmp_path: Path) -> None:
+    """No grandfathering. An entry written before the rule existed is exactly
+    the entry nobody reviewed, so it fails loudly rather than loading."""
+    path = tmp_path / "index.json"
+    path.write_text('[{"inv_num": "C1", "name": "x"}]', encoding="utf-8")
+    with pytest.raises(ValidationError):
+        load_index(path)
+
+
+@pytest.mark.parametrize("policy", ["redacted", "consignee_only", "unclassified"])
+def test_non_public_entry_is_rejected(tmp_path: Path, policy: str) -> None:
+    """A restricted entry in a public index is not something to filter out
+    downstream -- it is a file that must never have been written. Refusing to
+    load it fails the build instead of rendering a page."""
+    path = tmp_path / "index.json"
+    path.write_text(
+        json.dumps([{"inv_num": "C1", "name": "x", "disclosure": policy}]),
+        encoding="utf-8",
+    )
+    with pytest.raises(ValidationError):
+        load_index(path)

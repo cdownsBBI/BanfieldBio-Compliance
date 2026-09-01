@@ -6,11 +6,13 @@ one, otherwise fall back to the manufacturer's ``source_url``. Return
 ``None`` when neither exists so callers can choose to show a "no SDS on
 file" state instead of a broken link.
 
-Per-shipment URLs are NOT exposed here. Per-shipment artifacts are PDFs
-named with opaque UUID tokens and written by the ORS publisher; their URLs
-are constructed inline at publish time as
-``f"{config.base_url}/{config.shipment_dir}/{uuid}.pdf"`` so this module
-stays focused on the stable, enumerable surface (item, library, sds).
+Per-shipment URLs are NOT constructed here, and no longer can be. Shipment
+PDFs are not part of this site: they carry ship dates, quantities, lot
+numbers and CAS, and are served from the gated endpoint instead. A helper
+that composed a public shipment URL used to live in this module; it was
+removed because the only thing it could produce was a URL that must not
+exist. This module covers the public, intentionally-enumerable surface
+only (item, library, sds).
 """
 
 from __future__ import annotations
@@ -49,11 +51,3 @@ def library_index_url(config: SiteConfig) -> str:
     """Top-level library landing page."""
     return f"{config.base_url}/"
 
-
-def shipment_pdf_url(config: SiteConfig, token: str) -> str:
-    """URL of the per-shipment PDF, given an opaque UUID token.
-
-    The token is generated and stored in the private ORS DB; this function
-    only does string composition so the URL shape lives in one place.
-    """
-    return f"{config.base_url}/{config.shipment_dir}/{token}.pdf"

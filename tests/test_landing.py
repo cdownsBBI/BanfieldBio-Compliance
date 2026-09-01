@@ -51,6 +51,7 @@ def test_render_item_page_escapes_html_in_names(
     site_config: SiteConfig, tmp_path: Path
 ) -> None:
     entry = SdsEntry(
+        disclosure="public",
         inv_num="C1",
         name="<script>alert(1)</script>",
         mirror_path="sds/C1.pdf",

@@ -17,7 +17,6 @@ def site_config() -> SiteConfig:
         repo_name="BanfieldBio-Compliance",
         custom_domain="",
         sds_dir="sds",
-        shipment_dir="shipment",
         item_dir="item",
         index_file="data/index.json",
     )
@@ -31,7 +30,6 @@ def custom_domain_config() -> SiteConfig:
         repo_name="BanfieldBio-Compliance",
         custom_domain="https://compliance.banfieldbio.com",
         sds_dir="sds",
-        shipment_dir="shipment",
         item_dir="item",
         index_file="data/index.json",
     )
@@ -40,6 +38,7 @@ def custom_domain_config() -> SiteConfig:
 @pytest.fixture()
 def entry_with_mirror() -> SdsEntry:
     return SdsEntry(
+        disclosure="public",
         inv_num="C1174",
         name="Kraton G 1730",
         cas_num="68648-89-5",
@@ -52,6 +51,7 @@ def entry_with_mirror() -> SdsEntry:
 @pytest.fixture()
 def entry_link_only() -> SdsEntry:
     return SdsEntry(
+        disclosure="public",
         inv_num="C1025",
         name="Diethyl phthalate",
         cas_num="84-66-2",
@@ -64,6 +64,7 @@ def entry_link_only() -> SdsEntry:
 @pytest.fixture()
 def entry_no_sds() -> SdsEntry:
     return SdsEntry(
+        disclosure="public",
         inv_num="C9999",
         name="Unknown compound",
         cas_num=None,
@@ -98,7 +99,6 @@ def tmp_repo(tmp_path: Path) -> Path:
         '\n'
         '[library]\n'
         'sds_dir = "sds"\n'
-        'shipment_dir = "shipment"\n'
         'item_dir = "item"\n'
         'index_file = "data/index.json"\n',
         encoding="utf-8",

@@ -56,3 +56,16 @@ node_modules/
 # Local-only SDS archives (uncomment ONLY if you decide to version-control
 # the PDF library on a branch other than main and want a clean main).
 # docs/sds/*.pdf
+
+# Shipment artifacts -- NEVER in this repo, on any branch.
+#
+# A per-shipment PDF carries ship date, quantity, lot number and expiry for
+# every line. This repo is PUBLIC: its file tree is browsable on github.com
+# and anything ever committed stays in the history permanently, so an opaque
+# filename and a robots.txt disallow stop URL-guessing and crawlers, not
+# enumeration. Aggregated across shipments that is the whole outbound
+# shipping record.
+#
+# Shipment PDFs are served from the gated endpoint instead. ORS stages them
+# to a private directory and refuses, at two layers, to write here.
+docs/shipment/

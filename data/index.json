@@ -1,1 +1,92 @@
-[]
+[
+  {
+    "inv_num": "C1001",
+    "name": "Acetone",
+    "cas_num": "67-64-1",
+    "manufacturer": "Klean Strip",
+    "disclosure": "public",
+    "source_url": "https://www.sigmaaldrich.com/US/en/sds/sigald/179124",
+    "sds_version": "Klean Strip 2015.04.15",
+    "added_on": "2026-09-08"
+  },
+  {
+    "inv_num": "C1008",
+    "name": "Benzyl alcohol",
+    "cas_num": "100-51-6",
+    "manufacturer": "Penta",
+    "disclosure": "public",
+    "source_url": "https://www.sigmaaldrich.com/US/en/sds/sial/305197",
+    "sds_version": "AquaPhoenix Scientific 2015.01.19",
+    "added_on": "2026-09-08"
+  },
+  {
+    "inv_num": "C1025",
+    "name": "Diethyl phthalate",
+    "cas_num": "84-66-2",
+    "manufacturer": "Penta",
+    "disclosure": "public",
+    "source_url": "https://www.sigmaaldrich.com/US/en/sds/aldrich/w512206",
+    "sds_version": "Penta 2023.07.01",
+    "added_on": "2026-09-08"
+  },
+  {
+    "inv_num": "C1026",
+    "name": "Dimethylsulfoxide",
+    "cas_num": "67-68-5",
+    "manufacturer": "RM Jensen & Associates",
+    "disclosure": "public",
+    "source_url": "https://www.sigmaaldrich.com/US/en/sds/sigma/d8418",
+    "sds_version": "ThermoFisher 2021.12.24 r7",
+    "added_on": "2026-09-08"
+  },
+  {
+    "inv_num": "C1028",
+    "name": "Ethanol",
+    "cas_num": "64-17-5",
+    "manufacturer": "Bram Bull Company",
+    "disclosure": "public",
+    "source_url": "https://www.sigmaaldrich.com/US/en/sds/sigald/459844",
+    "sds_version": "Columbus Chemical 2021.10.01",
+    "added_on": "2026-09-08"
+  },
+  {
+    "inv_num": "C1029",
+    "name": "Ethyl acetate",
+    "cas_num": "141-78-6",
+    "manufacturer": "Pharmaco-Aaper",
+    "disclosure": "public",
+    "source_url": "https://www.sigmaaldrich.com/US/en/sds/sial/270989",
+    "sds_version": "Pharmco-Aaper 2013.02.08 v3",
+    "added_on": "2026-09-08"
+  },
+  {
+    "inv_num": "C1043",
+    "name": "Glycerin",
+    "cas_num": "56-81-5",
+    "manufacturer": "VVF Ltd.",
+    "disclosure": "public",
+    "source_url": "https://www.sigmaaldrich.com/US/en/sds/sial/g9012",
+    "sds_version": "VVF Ltd 2013.05.23",
+    "added_on": "2026-09-08"
+  },
+  {
+    "inv_num": "C1048",
+    "name": "Hexane",
+    "cas_num": "110-54-3",
+    "manufacturer": "Lab Alley Essential Chemicals",
+    "disclosure": "public",
+    "source_url": "https://www.sigmaaldrich.com/US/en/sds/sial/296090",
+    "sds_version": "AquaPhoenix Scientific 2015.03.09",
+    "added_on": "2026-09-08"
+  },
+  {
+    "inv_num": "C1063",
+    "name": "Isopropyl alcohol",
+    "cas_num": "67-63-0",
+    "manufacturer": null,
+    "disclosure": "public",
+    "source_url": "https://www.sigmaaldrich.com/US/en/sds/sigma/i9516",
+    "sds_version": "Airgas 2020.07.16 v1.03",
+    "added_on": "2026-09-08"
+  }
+]
